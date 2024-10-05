@@ -4,7 +4,7 @@ use std::io;
 use rand::Rng;
 use crate::assets::HANGMAN_ASSETS;
 
-static WORD_LIST: [&str; 4] = ["Albano", "Palle Anali", "Sesso", "tengo le palle enormi"];
+static WORD_LIST: [&str; 4] = ["Apple", "Banana", "Grape", "Peach"];
 
 fn main() {
     run_hangman(get_random_word(WORD_LIST));
@@ -24,20 +24,20 @@ fn run_hangman(word: &str) {
         println!("{}", HANGMAN_ASSETS.iter().nth(10 - remaining_attempts as usize).unwrap());
 
         if remaining_attempts <= 0 {
-            println!("\nHai perso!\n");
+            println!("\nYou lost!\n");
             break;
         }
 
         if current_guess == word {
-            println!("\nHai vinto in {tries} tentativi!\n");
+            println!("\nYou won with {tries} attempts!\n");
             return;
         }
 
         let mut input: String = String::new();
 
-        println!("Tentativi rimanenti: {remaining_attempts}\n", );
+        println!("Remaining attempts: {remaining_attempts}\n", );
         println!("\n{current_guess}\n");
-        println!("Inserisci una lettera o la frase intera: ");
+        println!("Insert a letter or a word: ");
 
         io::stdin().read_line(&mut input).expect("Read line failed.");
         input = input.trim().to_string().to_lowercase();
