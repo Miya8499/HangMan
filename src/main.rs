@@ -30,7 +30,7 @@ fn run_hangman(word: &str) {
 
         if current_guess == word {
             println!("\nYou won with {tries} attempts!\n");
-            return;
+            break;
         }
 
         let mut input: String = String::new();
